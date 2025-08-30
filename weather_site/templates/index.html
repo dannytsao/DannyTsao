@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <title>瘋景人天氣網站</title>
+</head>
+<body>
+  <h1>瘋景人的氣象預報</h1>
+  <form method="post">
+    <label for="mode">模式選擇:</label>
+    <select name="mode" id="mode">
+      <option value="simplified">精簡版</option>
+      <option value="standard">標準版</option>
+    </select><br>
+
+    <label for="location">地點或範圍:</label>
+    <input type="text" id="location" name="location" required><br>
+
+    <label for="date">日期或期間:</label>
+    <input type="text" id="date" name="date" required><br>
+
+    <label for="time_period">時段:</label>
+    <select name="time_period" id="time_period">
+      <option value="上午">上午</option>
+      <option value="下午">下午</option>
+      <option value="晚上">晚上</option>
+      <option value="全天">全天</option>
+    </select><br>
+
+    <fieldset>
+      <legend>加值模組:</legend>
+      <input type="checkbox" id="astro" name="modules" value="astro">
+      <label for="astro">天文攝影</label><br>
+      <input type="checkbox" id="sunset" name="modules" value="sunset">
+      <label for="sunset">火燒雲</label>
+    </fieldset>
+
+    <button type="submit">生成提示語</button>
+  </form>
+
+  {% if prompt %}
+  <h2>生成的提示語</h2>
+  <textarea rows="20" cols="80">{{ prompt }}</textarea>
+  {% endif %}
+</body>
+</html>
